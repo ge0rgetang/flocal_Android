@@ -373,9 +373,6 @@ class Misc {
                     notification = "Your $type has been upvoted: $content"
                 } else {
                     notification = "@$handle has upvoted your $type: $content"
-                    val editor = sharedPreferences.edit()
-                    editor.putString("handle.flocal", handle)
-                    editor.apply()
                 }
                 setNotification(postID, myID, userID, handle, notification, "upvote")
             }

@@ -63,7 +63,6 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
     lateinit var toolbar: Toolbar
     lateinit var toolbarTitleTextView: TextView
     lateinit var lastNotificationTextView: TextView
-    lateinit var menu: Menu
     lateinit var drawerLayout: DrawerLayout
     lateinit var drawerToggle: ActionBarDrawerToggle
 
@@ -80,6 +79,8 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
     lateinit var notificationsLayoutManager: LinearLayoutManager
     lateinit var notificationsRecyclerView: RecyclerView
     lateinit var notificationsAdapter: NotificationsAdapter
+
+    var menu: Menu? = null
 
     // MARK: - Vars
 
@@ -107,9 +108,10 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
 
     val ref: DatabaseReference = FirebaseDatabase.getInstance().reference
     val storageRef: StorageReference = FirebaseStorage.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+    var analytics: FirebaseAnalytics? = null
 
     val misc = Misc()
+    var searchHandler = Handler()
 
     // MARK: - Lifecycle
 
@@ -117,6 +119,7 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        analytics = FirebaseAnalytics.getInstance(this)
         setNavigation()
 
         myID = misc.setMyID(this)
@@ -160,8 +163,35 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
         leftDrawerLayout = findViewById(R.id.leftDrawerLayout)
         sideMenuLayoutManager = LinearLayoutManager(this)
         searchEditText = findViewById(R.id.searchEditText)
+
+        val searchEditTextWatcher = object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {
+//                searchHandler.removeCallbacksAndMessages(null)
+//                searchHandler.postDelayed({ ->
+//                    val text = editText.text.toString()
+//                    if (text != "") {
+//                        searchUser()
+//                    }
+//                }, 1000)
+            }
+        }
+        val searchDoneListener = TextView.OnEditorActionListener { _, p1, _ ->
+            if (p1 == EditorInfo.IME_ACTION_SEARCH) {
+                searchHandler.removeCallbacksAndMessages(null)
+                hideKeyboard()
+                searchEditText.clearFocus()
+                searchUser()
+                true
+            } else {
+                false
+            }
+        }
+
         searchEditText.addTextChangedListener( searchEditTextWatcher )
         searchEditText.setOnEditorActionListener( searchDoneListener )
+
         searchCancelButton = findViewById(R.id.searchCancelButton)
         searchCancelButton.setOnClickListener { searchCancelButtonClicked() }
         locationTextView = findViewById(R.id.locationTextView)
@@ -197,7 +227,34 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
 
         notificationsRecyclerView.addOnScrollListener( notificationsScrollListener )
 
-        drawerToggle = toggle
+        drawerToggle = object: ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            override fun onDrawerOpened(drawerView: View?) {
+                super.onDrawerOpened(drawerView)
+
+                hideKeyboard()
+
+                if (drawerView == leftDrawerLayout) {
+                    logViewSideMenu()
+                    refreshSideMenuRecycler()
+                }
+
+                if (drawerView == rightDrawerLayout) {
+                    logViewNotifications()
+                    notificationsRecyclerView.scrollToPosition(0)
+                    clearLastNotificationType()
+                    observeNotifications()
+                }
+            }
+
+            override fun onDrawerClosed(drawerView: View?) {
+                super.onDrawerClosed(drawerView)
+                if (drawerView == rightDrawerLayout) {
+                    clearLastNotificationType()
+                }
+            }
+        }
+
         drawerToggle.isDrawerIndicatorEnabled = false
         setSideMenuIcon(R.drawable.menu_s)
         drawerToggle.setToolbarNavigationClickListener { openSideMenu() }
@@ -222,10 +279,6 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
             super.onBackPressed()
             System.exit(0)
         }
-    }
-
-    override fun getDrawerToggleDelegate(): ActionBarDrawerToggle.Delegate? {
-        return super.getDrawerToggleDelegate()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -297,47 +350,22 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
     }
 
     fun setNotificationIcon(ids: Array<Int>) {
-        for (i in 0 until (menu.size() - 1)) {
-            menu.getItem(i).isVisible = false
+        if (menu != null) {
+            for (i in 0 until ((menu as Menu).size() - 1)) {
+                (menu as Menu).getItem(i).isVisible = false
 
-            val itemId = menu.getItem(i).itemId
-            if (ids.contains(itemId)) {
-                menu.getItem(i).isVisible = true
+                val itemId = (menu as Menu).getItem(i).itemId
+                if (ids.contains(itemId)) {
+                    (menu as Menu).getItem(i).isVisible = true
+                }
             }
         }
     }
 
     fun hideNotificationIcons() {
-        for (i in 0 until (menu.size() - 1)) {
-            menu.getItem(i).isVisible = false
-        }
-    }
-
-    val toggle = object: ActionBarDrawerToggle(this, drawerLayout, toolbar,
-            R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
-        override fun onDrawerOpened(drawerView: View?) {
-            super.onDrawerOpened(drawerView)
-
-            hideKeyboard()
-
-            if (drawerView == leftDrawerLayout) {
-                logViewSideMenu()
-                refreshSideMenuRecycler()
-                Toast.makeText(this@MainActivity, "triggered", Toast.LENGTH_SHORT).show()
-            }
-
-            if (drawerView == rightDrawerLayout) {
-                logViewNotifications()
-                notificationsRecyclerView.scrollToPosition(0)
-                clearLastNotificationType()
-                observeNotifications()
-            }
-        }
-
-        override fun onDrawerClosed(drawerView: View?) {
-            super.onDrawerClosed(drawerView)
-            if (drawerView == rightDrawerLayout) {
-                clearLastNotificationType()
+        if (menu != null) {
+            for (i in 0 until ((menu as Menu).size() - 1)) {
+                (menu as Menu).getItem(i).isVisible = false
             }
         }
     }
@@ -888,34 +916,6 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
 
     // MARK: - Search
 
-    var searchHandler = Handler()
-
-    val searchEditTextWatcher = object: TextWatcher {
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-        override fun afterTextChanged(p0: Editable?) {
-            searchHandler.removeCallbacksAndMessages(null)
-            searchHandler.postDelayed({ ->
-                val text = editText.text.toString()
-                if (text != "") {
-                    searchUser()
-                }
-            }, 1000)
-        }
-    }
-
-    val searchDoneListener = TextView.OnEditorActionListener { _, p1, _ ->
-        if (p1 == EditorInfo.IME_ACTION_SEARCH) {
-            searchHandler.removeCallbacksAndMessages(null)
-            hideKeyboard()
-            searchEditText.clearFocus()
-            searchUser()
-            true
-        } else {
-            false
-        }
-    }
-
     fun searchCancelButtonClicked() {
         searchEditText.setText("")
         searchEditText.clearFocus()
@@ -1318,7 +1318,7 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
     fun logViewSideMenu() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("viewSideMenu_Android", bundle)
+        analytics?.logEvent("viewSideMenu_Android", bundle)
     }
 
     fun logSearch(term: String) {
@@ -1326,27 +1326,27 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
         bundle.putString("myID", myID)
         bundle.putString("searchTerm", term)
         bundle.putString("searchTermLower", term.toLowerCase())
-        analytics.logEvent("viewSearchResults_Android", bundle)
+        analytics?.logEvent("viewSearchResults_Android", bundle)
     }
 
     fun logAddedUser(addedID: String) {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("userID", addedID)
-        analytics.logEvent("addedUser_Android", bundle)
+        analytics?.logEvent("addedUser_Android", bundle)
     }
 
     fun logRemoveAddedUser(addedID: String) {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("userID", addedID)
-        analytics.logEvent("removeAddedUser_Android", bundle)
+        analytics?.logEvent("removeAddedUser_Android", bundle)
     }
 
     fun logViewNotifications() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("viewNotifications_Android", bundle)
+        analytics?.logEvent("viewNotifications_Android", bundle)
     }
 
 
@@ -1368,7 +1368,7 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
             }
             else -> {}
         }
-        analytics.logEvent(child, bundle)
+        analytics?.logEvent(child, bundle)
     }
 
     fun logViewVideo(type: String, postID: String?, chatID: String?, messageID: String?) {
@@ -1389,21 +1389,21 @@ class MainActivity : AppCompatActivity(), SideMenuAdapter.SideMenuAdapterListene
             }
             else -> {}
         }
-        analytics.logEvent(child, bundle)
+        analytics?.logEvent(child, bundle)
     }
 
     fun logBlockedUser(userID: String) {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
-        analytics.logEvent("blockedUser_Android", bundle)
+        analytics?.logEvent("blockedUser_Android", bundle)
     }
 
     fun logUnblockedUser(userID: String) {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
-        analytics.logEvent("unblockedUser_Android", bundle)
+        analytics?.logEvent("unblockedUser_Android", bundle)
     }
 
     // MARK: - Storage

@@ -31,7 +31,7 @@ class FeedbackFragment : Fragment() {
 
     var myID: String = "0"
     val ref: DatabaseReference = FirebaseDatabase.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
     val misc = Misc()
 
     // MARK: - Lifecycle
@@ -48,6 +48,7 @@ class FeedbackFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -99,13 +100,13 @@ class FeedbackFragment : Fragment() {
     fun logViewFeedback() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("viewFeedback_Android", bundle)
+        analytics?.logEvent("viewFeedback_Android", bundle)
     }
 
     fun logWroteFeedback() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("wroteFeedback_Android", bundle)
+        analytics?.logEvent("wroteFeedback_Android", bundle)
     }
 
     // MARK: - Firebase

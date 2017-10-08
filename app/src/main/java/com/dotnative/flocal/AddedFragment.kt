@@ -74,7 +74,7 @@ class AddedFragment : Fragment() {
     var isRemoved: Boolean = false
 
     var ref: DatabaseReference = FirebaseDatabase.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
     var geoFireUsers: GeoFire = GeoFire(ref.child("users_location"))
     var geoQuery: GeoQuery? = null
 
@@ -95,6 +95,7 @@ class AddedFragment : Fragment() {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setLocationManager()
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -389,9 +390,9 @@ class AddedFragment : Fragment() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         when (selectedSegment) {
-            "added" -> { analytics.logEvent("viewAdded_Android", bundle) }
-            "followers" -> { analytics.logEvent("viewFollowers_Android", bundle) }
-            else -> { analytics.logEvent("viewLocals_Android", bundle) }
+            "added" -> { analytics?.logEvent("viewAdded_Android", bundle) }
+            "followers" -> { analytics?.logEvent("viewFollowers_Android", bundle) }
+            else -> { analytics?.logEvent("viewLocals_Android", bundle) }
         }
     }
 
@@ -399,7 +400,7 @@ class AddedFragment : Fragment() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("userID", addedID)
-        analytics.logEvent("addedUser_Android", bundle)
+        analytics?.logEvent("addedUser_Android", bundle)
     }
 
     // MARK: - Firebase

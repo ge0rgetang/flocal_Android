@@ -41,7 +41,7 @@ class LoginFragment : Fragment() {
 
     var ref: DatabaseReference = FirebaseDatabase.getInstance().reference
     val storageRef: StorageReference = FirebaseStorage.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     val misc = Misc()
@@ -60,6 +60,7 @@ class LoginFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -153,17 +154,17 @@ class LoginFragment : Fragment() {
     // MARK: Analytics
 
     fun logViewLogin() {
-        analytics.logEvent("viewLogin_Android", null)
+        analytics?.logEvent("viewLogin_Android", null)
     }
 
     fun logLoggedIn(userID: String) {
         val bundle = Bundle()
         bundle.putString("userID", userID)
-        analytics.logEvent("loggedIn_Android", bundle)
+        analytics?.logEvent("loggedIn_Android", bundle)
     }
 
     fun logViewForgotPassword() {
-        analytics.logEvent("viewForgotPassword_Android", null)
+        analytics?.logEvent("viewForgotPassword_Android", null)
     }
 
     // MARK: - Storage

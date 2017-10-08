@@ -11,13 +11,13 @@ class FirebaseInstanceIDService: FirebaseInstanceIdService() {
     // MARK: - Vars
 
     val misc = Misc()
-    val myID = misc.setMyID(this)
 
     // MARK: - Implementation
 
     override fun onTokenRefresh() {
         super.onTokenRefresh()
 
+         val myID = misc.setMyID(this)
          val token = FirebaseInstanceId.getInstance().token
          if (token != null) {
              val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)

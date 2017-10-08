@@ -35,7 +35,7 @@ class ReportUserFragment : Fragment() {
     val options = arrayOf("Offensive/Inappropriate Chat", "Inappropriate Posts", "Bullying", "Other")
 
     val ref: DatabaseReference = FirebaseDatabase.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
 
     val misc = Misc()
 
@@ -54,6 +54,7 @@ class ReportUserFragment : Fragment() {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setArguments()
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -124,14 +125,14 @@ class ReportUserFragment : Fragment() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
-        analytics.logEvent("viewReportUser_Android", bundle)
+        analytics?.logEvent("viewReportUser_Android", bundle)
     }
 
     fun logWroteReportUser() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
-        analytics.logEvent("wroteReportUser_Android", bundle)
+        analytics?.logEvent("wroteReportUser_Android", bundle)
     }
 
     // MARK: - Firebase

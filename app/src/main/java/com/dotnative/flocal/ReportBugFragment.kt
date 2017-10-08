@@ -33,7 +33,7 @@ class ReportBugFragment : Fragment() {
     val options = arrayOf("Post issue", "Profile issue", "Peeps issue", "Chat issue", "Other")
 
     val ref: DatabaseReference = FirebaseDatabase.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
 
     val misc = Misc()
 
@@ -51,6 +51,7 @@ class ReportBugFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -116,13 +117,13 @@ class ReportBugFragment : Fragment() {
     fun logViewReportBug() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("viewReportBug_Android", bundle)
+        analytics?.logEvent("viewReportBug_Android", bundle)
     }
 
     fun logWroteReportBug() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("wroteReportBug_Android", bundle)
+        analytics?.logEvent("wroteReportBug_Android", bundle)
     }
 
     // MARK: - Firebase

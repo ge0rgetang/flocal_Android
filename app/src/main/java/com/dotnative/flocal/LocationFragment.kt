@@ -71,7 +71,7 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
     var zip: String = "94720"
 
     var ref: DatabaseReference = FirebaseDatabase.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
     var geoFireUsers: GeoFire = GeoFire(ref.child("users_location"))
     var geoFirePosts: GeoFire = GeoFire(ref.child("posts_location"))
     var geoQuery: GeoQuery? = null
@@ -95,6 +95,7 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         activity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         setLocationManager()
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -390,7 +391,7 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
     fun logViewLocation() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("viewLocation_Android", bundle)
+        analytics?.logEvent("viewLocation_Android", bundle)
     }
 
     fun logSetMyLocation() {
@@ -400,7 +401,7 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
         bundle.putDouble("latitude", latitude)
         bundle.putString("city", city)
         bundle.putString("zip", zip)
-        analytics.logEvent("setMyLocation_Android", bundle)
+        analytics?.logEvent("setMyLocation_Android", bundle)
     }
 
     fun logSetOtherLocation() {
@@ -408,7 +409,7 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
         bundle.putString("myID", myID)
         bundle.putString("city", city)
         bundle.putString("zip", zip)
-        analytics.logEvent("setOtherLocation_Android", bundle)
+        analytics?.logEvent("setOtherLocation_Android", bundle)
     }
 
     // MARK: - Firebase

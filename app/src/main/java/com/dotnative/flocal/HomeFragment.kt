@@ -102,7 +102,7 @@ class HomeFragment : Fragment() {
 
     var ref: DatabaseReference = FirebaseDatabase.getInstance().reference
     val storageRef: StorageReference = FirebaseStorage.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
     var geoFireUsers: GeoFire = GeoFire(ref.child("users_location"))
     var geoFirePosts: GeoFire = GeoFire(ref.child("posts_location"))
     var geoQuery: GeoQuery? = null
@@ -127,6 +127,7 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setLocationManager()
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -571,9 +572,9 @@ class HomeFragment : Fragment() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         when (selectedSegment) {
-            "hot" -> { analytics.logEvent("viewPostsHot_Android", bundle) }
-            "added" -> { analytics.logEvent("viewPostsAdded_Android", bundle) }
-            else -> { analytics.logEvent("viewPostsHome_Android", bundle) }
+            "hot" -> { analytics?.logEvent("viewPostsHot_Android", bundle) }
+            "added" -> { analytics?.logEvent("viewPostsAdded_Android", bundle) }
+            else -> { analytics?.logEvent("viewPostsHome_Android", bundle) }
         }
     }
 
@@ -582,7 +583,7 @@ class HomeFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
         bundle.putString("postID", postID)
-        analytics.logEvent("upvotedPost_Android", bundle)
+        analytics?.logEvent("upvotedPost_Android", bundle)
     }
 
     fun logDownvoted(userID: String, postID: String) {
@@ -590,13 +591,13 @@ class HomeFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
         bundle.putString("postID", postID)
-        analytics.logEvent("downvotedPost_Android", bundle)
+        analytics?.logEvent("downvotedPost_Android", bundle)
     }
 
     fun logViewWritePost() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("viewWritePost_Android", bundle)
+        analytics?.logEvent("viewWritePost_Android", bundle)
     }
 
     fun logPostSent(postID: String, type: String) {
@@ -610,7 +611,7 @@ class HomeFragment : Fragment() {
         bundle.putBoolean("atMyLocation", myLocation)
         bundle.putDouble("longitude", longitude)
         bundle.putDouble("latitude", latitude)
-        analytics.logEvent("sentPost_Android", bundle)
+        analytics?.logEvent("sentPost_Android", bundle)
     }
 
     fun logUserTagged(postID: String, userID: String, handle: String) {
@@ -619,7 +620,7 @@ class HomeFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
         bundle.putString("userHandle", handle)
-        analytics.logEvent("taggedUserInPost_Android", bundle)
+        analytics?.logEvent("taggedUserInPost_Android", bundle)
     }
 
     // MARK: - Storage

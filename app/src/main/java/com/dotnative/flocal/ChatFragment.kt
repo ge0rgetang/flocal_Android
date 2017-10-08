@@ -73,7 +73,7 @@ class ChatFragment : Fragment() {
 
     var ref: DatabaseReference = FirebaseDatabase.getInstance().reference
     val storageRef: StorageReference = FirebaseStorage.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
 
     val misc = Misc()
     var popupContainer: ViewGroup? = null
@@ -95,6 +95,7 @@ class ChatFragment : Fragment() {
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         activity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         setArguments()
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -483,7 +484,7 @@ class ChatFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
         bundle.putString("chatID", chatID)
-        analytics.logEvent("viewChat_Android", bundle)
+        analytics?.logEvent("viewChat_Android", bundle)
     }
 
     fun logChatTextSent() {
@@ -491,7 +492,7 @@ class ChatFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
         bundle.putString("chatID", chatID)
-        analytics.logEvent("sentChatText_Android", bundle)
+        analytics?.logEvent("sentChatText_Android", bundle)
     }
 
     fun logViewSendChatImageVideo(type: String) {
@@ -501,7 +502,7 @@ class ChatFragment : Fragment() {
         bundle.putString("chatID", chatID)
         val t = type.capitalize()
         val child = "viewSend$t" + "FromChat" + "_Android"
-        analytics.logEvent(child, bundle)
+        analytics?.logEvent(child, bundle)
     }
 
     fun logChatImageVideoSent(type: String) {
@@ -511,7 +512,7 @@ class ChatFragment : Fragment() {
         bundle.putString("chatID", chatID)
         val t = type.capitalize()
         val child = "sentChat$t" + "_Android"
-        analytics.logEvent(child, bundle)
+        analytics?.logEvent(child, bundle)
     }
 
     // MARK: - Storage

@@ -37,7 +37,7 @@ class ChatListFragment : Fragment() {
     var isRemoved: Boolean = false
 
     var ref: DatabaseReference = FirebaseDatabase.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
 
     val misc = Misc()
     var displayProgress: Boolean = false
@@ -56,6 +56,7 @@ class ChatListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -153,7 +154,7 @@ class ChatListFragment : Fragment() {
     fun logViewChatList() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("viewChatList_Android", bundle)
+        analytics?.logEvent("viewChatList_Android", bundle)
     }
 
     // MARK: - Firebase

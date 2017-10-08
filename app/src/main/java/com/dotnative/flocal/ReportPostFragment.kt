@@ -34,7 +34,7 @@ class ReportPostFragment : Fragment() {
     val options = arrayOf("Offensive/Abusive/Illegal", "Bullying", "Spam", "Other")
 
     val ref: DatabaseReference = FirebaseDatabase.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
 
     val misc = Misc()
 
@@ -53,6 +53,7 @@ class ReportPostFragment : Fragment() {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setArguments()
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -128,14 +129,14 @@ class ReportPostFragment : Fragment() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("postID", postID)
-        analytics.logEvent("viewReportPost_Android", bundle)
+        analytics?.logEvent("viewReportPost_Android", bundle)
     }
 
     fun logWroteReportPost() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("postID", postID)
-        analytics.logEvent("wroteReportPost_Android", bundle)
+        analytics?.logEvent("wroteReportPost_Android", bundle)
     }
 
     fun logViewReportReply() {
@@ -143,7 +144,7 @@ class ReportPostFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("postID", postID)
         bundle.putString("replyID", replyID)
-        analytics.logEvent("viewReportReply_Android", bundle)
+        analytics?.logEvent("viewReportReply_Android", bundle)
     }
 
     fun logWroteReportReply() {
@@ -151,7 +152,7 @@ class ReportPostFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("postID", postID)
         bundle.putString("replyID", replyID)
-        analytics.logEvent("wroteReportReply_Android", bundle)
+        analytics?.logEvent("wroteReportReply_Android", bundle)
     }
 
     // MARK: - Firebase

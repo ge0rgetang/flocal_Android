@@ -61,7 +61,7 @@ class UserProfileFragment : Fragment() {
     var isRemoved: Boolean = false
 
     var ref: DatabaseReference = FirebaseDatabase.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
     val storageRef: StorageReference = FirebaseStorage.getInstance().reference
 
     val misc = Misc()
@@ -82,6 +82,7 @@ class UserProfileFragment : Fragment() {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setArguments()
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -231,7 +232,7 @@ class UserProfileFragment : Fragment() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
-        analytics.logEvent("viewUserProfile_Android", bundle)
+        analytics?.logEvent("viewUserProfile_Android", bundle)
     }
 
     fun logChatSent() {
@@ -239,14 +240,14 @@ class UserProfileFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
         bundle.putString("chatID", chatID)
-        analytics.logEvent("sentChatText_Android", bundle)
+        analytics?.logEvent("sentChatText_Android", bundle)
     }
 
     fun logAddedUser(userID: String) {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
-        analytics.logEvent("addedUser_Android", bundle)
+        analytics?.logEvent("addedUser_Android", bundle)
     }
 
     fun logUpvoted(userID: String, postID: String) {
@@ -254,7 +255,7 @@ class UserProfileFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
         bundle.putString("postID", postID)
-        analytics.logEvent("upvotedPost_Android", bundle)
+        analytics?.logEvent("upvotedPost_Android", bundle)
     }
 
     fun logDownvoted(userID: String, postID: String) {
@@ -262,7 +263,7 @@ class UserProfileFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
         bundle.putString("postID", postID)
-        analytics.logEvent("downvotedPost_Android", bundle)
+        analytics?.logEvent("downvotedPost_Android", bundle)
     }
 
     // MARK: - Storage

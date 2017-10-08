@@ -66,7 +66,7 @@ class ReplyFragment : Fragment() {
 
     var ref: DatabaseReference = FirebaseDatabase.getInstance().reference
     val storageRef: StorageReference = FirebaseStorage.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
 
     val misc = Misc()
     var popupContainer: ViewGroup? = null
@@ -88,6 +88,7 @@ class ReplyFragment : Fragment() {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setArguments()
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -387,7 +388,7 @@ class ReplyFragment : Fragment() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
         bundle.putString("postID", postID)
-        analytics.logEvent(child, bundle)
+        analytics?.logEvent(child, bundle)
     }
 
     fun logUpvoted(userID: String, postID: String) {
@@ -395,7 +396,7 @@ class ReplyFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
         bundle.putString("postID", postID)
-        analytics.logEvent("upvotedPost_Android", bundle)
+        analytics?.logEvent("upvotedPost_Android", bundle)
     }
 
     fun logDownvoted(userID: String, postID: String) {
@@ -403,7 +404,7 @@ class ReplyFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
         bundle.putString("postID", postID)
-        analytics.logEvent("downvotedPost_Android", bundle)
+        analytics?.logEvent("downvotedPost_Android", bundle)
     }
 
     fun logUpvotedReply(userID: String, postID: String, replyID: String) {
@@ -412,7 +413,7 @@ class ReplyFragment : Fragment() {
         bundle.putString("userID", userID)
         bundle.putString("postID", postID)
         bundle.putString("replyID", replyID)
-        analytics.logEvent("upvotedReply_Android", bundle)
+        analytics?.logEvent("upvotedReply_Android", bundle)
     }
 
     fun logDownvotedReply(userID: String, postID: String, replyID: String) {
@@ -421,13 +422,13 @@ class ReplyFragment : Fragment() {
         bundle.putString("userID", userID)
         bundle.putString("postID", postID)
         bundle.putString("replyID", replyID)
-        analytics.logEvent("downvotedReply_Android", bundle)
+        analytics?.logEvent("downvotedReply_Android", bundle)
     }
 
     fun logViewWriteReply() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("viewWriteReply_Android", bundle)
+        analytics?.logEvent("viewWriteReply_Android", bundle)
     }
 
     fun logReplySent(replyID: String) {
@@ -443,7 +444,7 @@ class ReplyFragment : Fragment() {
         bundle.putBoolean("atMyLocation", myLocation)
         bundle.putDouble("longitude", longitude)
         bundle.putDouble("latitude", latitude)
-        analytics.logEvent("sentReply_Android", bundle)
+        analytics?.logEvent("sentReply_Android", bundle)
     }
 
     fun logUserTagged(replyID: String, userID: String, handle: String) {
@@ -453,7 +454,7 @@ class ReplyFragment : Fragment() {
         bundle.putString("myID", myID)
         bundle.putString("userID", userID)
         bundle.putString("userHandle", handle)
-        analytics.logEvent("taggedUserInReply_Android", bundle)
+        analytics?.logEvent("taggedUserInReply_Android", bundle)
     }
 
     fun logViewEdit(replyID: String?) {
@@ -467,7 +468,7 @@ class ReplyFragment : Fragment() {
 
         bundle.putString("postID", postID)
         bundle.putString("myID", myID)
-        analytics.logEvent("viewEdit" + type + "_Android", bundle)
+        analytics?.logEvent("viewEdit" + type + "_Android", bundle)
     }
 
     fun logEdited(replyID: String?) {
@@ -481,7 +482,7 @@ class ReplyFragment : Fragment() {
 
         bundle.putString("postID", postID)
         bundle.putString("myID", myID)
-        analytics.logEvent("edited" + type + "_Android", bundle)
+        analytics?.logEvent("edited" + type + "_Android", bundle)
     }
 
     // MARK: - Storage

@@ -33,7 +33,7 @@ class AboutFragment : Fragment() {
     private var aboutInteractionListener: AboutInteractionListener? = null
 
     var myID: String = "0"
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
     val misc = Misc()
 
     var popupContainer: ViewGroup? = null
@@ -53,6 +53,7 @@ class AboutFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -137,15 +138,15 @@ class AboutFragment : Fragment() {
     fun logViewAbout() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("viewAbout_Android", bundle)
+        analytics?.logEvent("viewAbout_Android", bundle)
     }
 
     fun logViewPrivacyPolicy() {
-        analytics.logEvent("viewPrivacyPolicy_Android", null)
+        analytics?.logEvent("viewPrivacyPolicy_Android", null)
     }
 
     fun logViewTerms() {
-        analytics.logEvent("viewTerms_Android", null)
+        analytics?.logEvent("viewTerms_Android", null)
     }
 
 }

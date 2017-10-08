@@ -59,7 +59,7 @@ class SignUpFragment : Fragment() {
 
     var ref: DatabaseReference = FirebaseDatabase.getInstance().reference
     val storageRef: StorageReference = FirebaseStorage.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     val misc = Misc()
@@ -78,7 +78,7 @@ class SignUpFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -297,22 +297,22 @@ class SignUpFragment : Fragment() {
     // MARK: Analytics
 
     fun logViewSignUp() {
-        analytics.logEvent("viewSignUp_Android", null)
+        analytics?.logEvent("viewSignUp_Android", null)
     }
 
     fun logSignedUp(userID: String, email: String) {
         val bundle = Bundle()
         bundle.putString("userID", userID)
         bundle.putString("email", email)
-        analytics.logEvent("signedUp_Android", bundle)
+        analytics?.logEvent("signedUp_Android", bundle)
     }
 
     fun logViewPrivacyPolicy() {
-        analytics.logEvent("viewPrivacyPolicy_Android", null)
+        analytics?.logEvent("viewPrivacyPolicy_Android", null)
     }
 
     fun logViewTerms() {
-        analytics.logEvent("viewTerms_Android", null)
+        analytics?.logEvent("viewTerms_Android", null)
     }
 
     // MARK: Storage

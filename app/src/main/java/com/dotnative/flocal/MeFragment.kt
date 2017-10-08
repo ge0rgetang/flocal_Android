@@ -59,7 +59,7 @@ class MeFragment : Fragment() {
 
     var ref: DatabaseReference = FirebaseDatabase.getInstance().reference
     val storageRef: StorageReference = FirebaseStorage.getInstance().reference
-    val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    var analytics: FirebaseAnalytics? = null
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     var meValueListener: ValueEventListener? = null
@@ -80,6 +80,7 @@ class MeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        analytics = FirebaseAnalytics.getInstance(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -425,19 +426,19 @@ class MeFragment : Fragment() {
     fun logViewMe() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("viewMe_Android", bundle)
+        analytics?.logEvent("viewMe_Android", bundle)
     }
 
     fun logProfPicEdited() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("editedProfilePic_Android", bundle)
+        analytics?.logEvent("editedProfilePic_Android", bundle)
     }
 
     fun logBackgroundPicEdited() {
         val bundle = Bundle()
         bundle.putString("myID", myID)
-        analytics.logEvent("editedBackgroundPic_Android", bundle)
+        analytics?.logEvent("editedBackgroundPic_Android", bundle)
     }
 
     fun logViewEdit(type: String) {
@@ -445,7 +446,7 @@ class MeFragment : Fragment() {
         bundle.putString("myID", myID)
 
         val t = type.capitalize() + "_Android"
-        analytics.logEvent("viewEdit$t", bundle)
+        analytics?.logEvent("viewEdit$t", bundle)
     }
 
     fun logEdited(type: String) {
@@ -453,7 +454,7 @@ class MeFragment : Fragment() {
         bundle.putString("myID", myID)
 
         val t = type.capitalize() + "_Android"
-        analytics.logEvent("edited$t", bundle)
+        analytics?.logEvent("edited$t", bundle)
     }
 
     // MARK: Storage
