@@ -1,0 +1,260 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">flocal</string>
+
+    <string name="signUp">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="home">Home</string>
+    <string name="comments">Comments</string>
+    <string name="peeps">Peeps</string>
+    <string name="chats">Chats</string>
+    <string name="profile">Profile</string>
+    <string name="me">Me</string>
+    <string name="reportBug">Report Bug</string>
+    <string name="feedback">Feedback</string>
+    <string name="about">About</string>
+    <string name="reportUser">Report User</string>
+    <string name="reportPost">Report Post</string>
+    <string name="reportComment">Report Comment</string>
+    <string name="searchHandle">search handle&#8230;</string>
+    <string name="enterLocation">enter a location&#8230;</string>
+
+    <string name="newSegment">NEW</string>
+    <string name="hotSegment">HOT</string>
+    <string name="addedSegment">ADDED</string>
+    <string name="writePostHint">What\'s going on?</string>
+    <string name="writePostFullHint">Post for the peeps around you&#8230; (tag others with @theirHandle)</string>
+    <string name="noPostsNew">No posts found :( Be the first ↑</string>
+    <string name="noPosts">No posts found :( Go to the new section to write your own!</string>
+    <string name="writeReplyHint">write a comment&#8230;</string>
+    <string name="writeReplyFullHint">write a comment&#8230; (tag others or respond to repliers with @theirHandle)</string>
+    <string name="noReplies">No comments yet. Be the first!</string>
+
+    <string name="orderedSegment">ORDERED</string>
+    <string name="topSegment">TOP</string>
+    <string name="newestSegment">NEWEST</string>
+
+    <string name="menu">menu</string>
+    <string name="notifications">Notifications</string>
+    <string name="settings">settings</string>
+    <string name="notification">notification</string>
+    <string name="reply">reply</string>
+    <string name="tagged">tagged</string>
+    <string name="upvote">upvote</string>
+    <string name="downvote">downvote</string>
+    <string name="added">added</string>
+    <string name="chat">chat</string>
+    <string name="chatUpper">Chat</string>
+
+    <string name="noSearchResults">No peeps found :(</string>
+    <string name="noNotifications">You do not have any notifications.</string>
+
+    <string name="noContent">no content</string>
+    <string name="logout">Log Out</string>
+
+    <string name="chooseCamera">Take a Photo</string>
+    <string name="chooseFrontCamera">Take a Selfie!</string>
+    <string name="chooseLibrary">Choose from Photo Library</string>
+
+    <string name="error">An error occurred</string>
+    <string name="loading">loading&#8230;</string>
+
+    <string name="tapProfilePic">Tap To Add Profile Pic</string>
+    <string name="handleNo">This handle is available!</string>
+    <string name="handleYes">Sorry, this handle is unavailable.</string>
+    <string name="handleSpecial">Only a-z, A-Z, . and _ are allowed.</string>
+    <string name="handleInternet">Could not connect to internet/server.</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="location">Location</string>
+    <string name="myLocation">My Location</string>
+
+    <string name="handle">Handle</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="privacyPolicy">Privacy Policy</string>
+    <string name="terms">Terms &amp; Conditions</string>
+    <string name="forgotPassword">Forgot Password?</string>
+    <string name="enterRegisteredEmail">Please enter your registered email.</string>
+
+    <string name="x">X</string>
+
+    <string name="title">title</string>
+
+    <string name="backgroundPic">backgroundPic</string>
+    <string name="tapToAddBackground">Tap To Add Background Pic</string>
+    <string name="profilePic">profilePic</string>
+    <string name="points">points</string>
+    <string name="followers">followers</string>
+    <string name="description">description</string>
+    <string name="privateInfo">Private Info</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="birthday">Birthday</string>
+
+    <string name="edit">edit&#8230;</string>
+    <string name="characterCount">/255</string>
+
+    <string name="editHandle">Change Handle</string>
+    <string name="editDescription">/dit Description</string>
+    <string name="editName">Change Name</string>
+    <string name="editPhone">Change Phone</string>
+    <string name="editBirthday">Change Birthday</string>
+    <string name="editPost">Edit Post</string>
+    <string name="editReply">Edit Comment</string>
+    <string name="editLogin">Edit Login</string>
+    <string name="currentEmail">Current Email</string>
+    <string name="currentPassword">Current Pass</string>
+    <string name="newEmail">New Email</string>
+    <string name="newPassword">New Pass</string>
+    <string name="authenticateText">Please re-enter your current login info above. If you only want to change one field below, leave the other blank.</string>
+
+    <string name="noChatList">You do not have any chats. Start a conversation by going to someones profile!</string>
+    <string name="info">info</string>
+
+    <string name="noChat">No messages yet.</string>
+    <string name="sendMessage">send a message&#8230;</string>
+    <string name="typing">&#8230;</string>
+    <string name="camera">camera</string>
+    <string name="send">send</string>
+    <string name="timestamp">timestamp</string>
+    <string name="imagePic">imagePic</string>
+    <string name="video">video</string>
+    <string name="play">play</string>
+
+    <string name="reportPostReason">Report Reason</string>
+    <string name="reportUserReason">User Report Reason</string>
+    <string name="details">details&#8230;</string>
+    <string name="sendReport">Send Report</string>
+
+    <string name="locals">Locals</string>
+    <string name="addedCap">Added</string>
+    <string name="followersCap">Followers</string>
+
+    <string name="noUserPosts">This user has no posts.</string>
+    <string name="noUserInfo">We encountered an error and can\'t load this user. Please report this bug.</string>
+    <string name="blocked">This user has blocked you.</string>
+
+    <string name="leaveFeedback">Leave us some feedback or suggestions!</string>
+    <string name="feedbackHint">Type feedback here&#8230;</string>
+
+    <string name="reportBugReason">Bug Report Reason</string>
+
+    <string name="cc">Creative Commons</string>
+
+    <string name="attribution">
+        The following icons fall under Creative Commons and were all downloaded from thenounproject.com (The Noun Project):
+        \n\nLocation, Play, by Adrien Coquet
+        \nPeople Group, by Aliwijaya
+        \nProfile, by Anath
+        \nHeart, by andriwidodo
+        \nMore, by Aya Sofya
+        \nHome Location, by BomSymbols
+        \nCheck Mark, by Egidio Filippetti
+        \nChat (flipped horizontal), Send, by Gregor Cresnar
+        \nFire, by HLD
+        \nSign Up, by IconDots
+        \nCamera, Chat (flipped horizontal), Search, by i cons
+        \nPencil (combined with Clock), by iconsphere
+        \nKey, by il Capitano
+        \nEye Mask (combined with RSS), by Jems Mayor
+        \nTag, by Jony
+        \nClock (combined with Pencil), by Kidiladon
+        \nSquircle, by Luuk Lamers
+        \nAdd Person, by MFRA
+        \nSettings, by unlimicon
+        \nHappy Face, by Mooms
+        \nDown Arrow, Up Arrow, by mikicon
+        \nMenu, Reply, by Numero Uno
+        \nCancel, Reply, by Pawel Glen
+        \nDead, by Rodolfo Alvarez
+        \nUpload Photos, by Ryan Beck
+        \nQuestion Mark, by Tinashe Mugayi
+        \nUser, by Victor Akio Zukeran
+        \n\nAdditionally, all icons were modified by filling with color. A link to the Creative Commons license is provided below.
+
+        \n\nThe following sounds fall under Creative Commons Attribution:
+        \n\npop_drip, from rcptones.com (dev_tones)
+        \n\nFrom freesound.org:
+        \nUI Completed Status Alert Notification SFX001.wav, by Headphaze
+        \nCamera Shutter, Fast, A.wav, by InspectorJ
+        \nbeepbeep.wav, by leviclaassen
+        \nConfirmation Downward, by original_sound
+        \nLevel Up 01, by rhodesmas
+    </string>
+
+    <string name="license" tools:ignore="TypographyOther">
+        android-Action-Sheet is available under the MIT License. Copyright (c) 2014 baoyongzhang
+        \nandroid-segemented-control is available under the MIT License. Copyright (c) 2014 Le Van Hoang
+
+        \n\nThe MIT License (MIT)
+        \n\nPermission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+
+        \n\nThe above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+
+        \n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+
+        \n\n\n\nsquare/picasso, square/OkHttp, hdodenhof/CircleImageView, are available under the Apache license:
+
+        \n\nLicensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+
+        \n\nhttp://www.apache.org/licenses/LICENSE-2.0
+
+        \n\nUnless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+    </string>
+
+    <string name="termsText" tools:ignore="TypographyOther">
+        flocal App End User License Agreement
+        \n\nThis End User License Agreement (“Agreement”) is between you and DotNative, Inc. and governs use of this app made available through the Apple App Store. By installing the flocal App, you agree to be bound by this Agreement and understand that there is no tolerance for objectionable content. If you do not agree with the terms and conditions of this Agreement, you are not entitled to use the flocal App.
+        \n\nIn order to ensure DotNative, Inc. provides the best experience possible for everyone, we strongly enforce a no tolerance policy for objectionable content. If you see inappropriate content, please use the “Report” feature found under each post.
+        \n\1. Parties
+        \nThis Agreement is between you and DotNative, Inc. only, and not Apple, Inc. (“Apple”). Notwithstanding the foregoing, you acknowledge that Apple and its subsidiaries are third party beneficiaries of this Agreement and Apple has the right to enforce this Agreement against you. DotNative, Inc., not Apple, is solely responsible for the flocal app and its content.
+        \n\n2. Privacy
+        \nDotNative, Inc. may collect and use information about your usage of the flocal App, including certain types of information from and about your device. DotNative, Inc. may use this information, as long as it is in a form that does not personally identify you, to measure the use and performance of the flocal App.
+        \n\n3. Limited License
+        \nDotNative, Inc. grants you a limited, non-exclusive, non-transferable, revocable license to use the flocal App for your personal, non-commercial purposes. You may only use the flocal App on Apple devices that you own or control and as permitted by the App Store Terms of Service.
+        \n\n4. Age Restrictions
+        \nBy using the flocal App, you represent and warrant that (a) you are 17 years of age or older and you agree to be bound by this Agreement; (b) if you are under 17 years of age, you have obtained verifiable consent from a parent or legal guardian; and (c) your use of the flocal App does not violate any applicable law or regulation. Your access to the flocal App may be terminated without warning if DotNative, Inc. believes, in its sole discretion, that you are under the age of 17 years and have not obtained verifiable consent from a parent or legal guardian. If you are a parent or legal guardian and you provide your consent to your child’s use of the flocal App, you agree to be bound by this Agreement in respect to your child’s use of the flocal App.
+        \n\n5. Objectionable Content Policy
+        \n\Content may not be submitted to DotNative, Inc., who will moderate all content and ultimately decide whether or not to post a submission to the extent such content includes, is in conjunction with, or alongside any, Objectionable Content. Objectionable Content includes, but is not limited to: (i) sexually explicit materials; (ii) obscene, defamatory, libelous, slanderous, violent and/or unlawful content or profanity; (iii) content that infringes upon the rights of any third party, including copyright, trademark, privacy, publicity or other personal or proprietary right, or that is deceptive or fraudulent; (iv) content that promotes the use or sale of illegal or regulated substances, tobacco products, ammunition and/or firearms; and (v) gambling, including without limitation, any online casino, sports books, bingo or poker.
+        \n\n6. Warranty
+        \nDotNative, Inc. disclaims all warranties about the flocal App to the fullest extent permitted by law. To the extent any warranty exists under law that cannot be disclaimed, DotNative, Inc., not Apple, shall be solely responsible for such warranty.
+        \n\n7. Maintenance and Support\n
+        \nDotNative, Inc. does provide minimal maintenance or support for it but not to the extent that any maintenance or support is required by applicable law, DotNative, Inc., not Apple, shall be obligated to furnish any such maintenance or support.
+        \n\n8. Product Claims
+        \nDotNative, Inc., not Apple, is responsible for addressing any claims by you relating to the flocal App or use of it, including, but not limited to: (i) any product liability claim; (ii) any claim that the flocal App fails to conform to any applicable legal or regulatory requirement; and (iii) any claim arising under consumer protection or similar legislation. Nothing in this Agreement shall be deemed an admission that you may have such claims.
+        \n\n9. Third Party Intellectual Property Claims
+        \nDotNative, Inc. shall not be obligated to indemnify or defend you with respect to any third party claim arising out or relating to the flocal App. To the extent DotNative, Inc. is required to provide indemnification by applicable law, DotNative, Inc., not Apple, shall be solely responsible for the investigation, defense, settlement and discharge of any claim that the flocal App or your use of it infringes any third party intellectual property right.
+    </string>
+
+    <string name="authorText">
+        There was no sudden epiphany. The idea was a series of small moments that added up over time. I wanted a community network — a platform for locals. So I made an app.
+        \n -gt
+    </string>
+
+
+    <string name="title_activity_splash">SplashActivity</string>
+
+</resources>

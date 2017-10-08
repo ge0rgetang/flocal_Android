@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "417885474904",
+    "firebase_url": "https://flocal-d65dd.firebaseio.com",
+    "project_id": "flocal-d65dd",
+    "storage_bucket": "flocal-d65dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417885474904:android:37f3d4ac2d194649",
+        "android_client_info": {
+          "package_name": "com.dotnative.flocal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417885474904-al3cr0329li32r2r4hi8ugiutecppccd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dotnative.flocal",
+            "certificate_hash": "006a62365d2b755c02395589bd5b3c03dd7b1d06"
+          }
+        },
+        {
+          "client_id": "417885474904-q1iket549540ner6cl25gk4kl0fhjpid.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFhMRheUFZfZOlFA0hgTrdrhiQER8D35M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417885474904-q1iket549540ner6cl25gk4kl0fhjpid.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "417885474904-kc6bhq6a208npca98jcuh5g2al0347al.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dotnative.flocal",
+                "app_store_id": "1240561915"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,95 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionSheetStyle">@style/ActionSheetStyleiOS7</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="ActionSheetStyleiOS7">
+        <item name="actionSheetBackground">@android:color/transparent</item>
+        <item name="cancelButtonBackground">@drawable/slt_as_ios7_cancel_bt</item>
+        <item name="otherButtonTopBackground">@drawable/slt_as_ios7_other_bt_top</item>
+        <item name="otherButtonMiddleBackground">@drawable/slt_as_ios7_other_bt_middle</item>
+        <item name="otherButtonBottomBackground">@drawable/slt_as_ios7_other_bt_bottom</item>
+        <item name="otherButtonSingleBackground">@drawable/slt_as_ios7_other_bt_single</item>
+        <item name="cancelButtonTextColor">@color/flocalColor</item>
+        <item name="otherButtonTextColor">@color/flocalColor</item>
+        <item name="actionSheetPadding">10dp</item>
+        <item name="otherButtonSpacing">0dp</item>
+        <item name="cancelButtonMarginTop">10dp</item>
+        <item name="actionSheetTextSize">12sp</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="flocalTheme">
+        <item name="colorPrimary">@color/softGreyColor</item>
+        <item name="colorPrimaryDark">@color/flocalColor</item>
+        <item name="colorAccent">@color/flocalColor</item>
+    </style>
+
+    <style name="flocalBlueGreyTheme">
+        <item name="colorPrimary">@color/softGreyColor</item>
+        <item name="colorPrimaryDark">@color/flocalBlueGrey</item>
+        <item name="colorAccent">@color/flocalBlueGrey</item>
+    </style>
+
+    <style name="flocalBlueTheme">
+        <item name="colorPrimary">@color/softGreyColor</item>
+        <item name="colorPrimaryDark">@color/flocalBlue</item>
+        <item name="colorAccent">@color/flocalBlue</item>
+    </style>
+
+    <style name="flocalGreenTheme">
+        <item name="colorPrimary">@color/softGreyColor</item>
+        <item name="colorPrimaryDark">@color/flocalGreen</item>
+        <item name="colorAccent">@color/flocalGreen</item>
+    </style>
+
+    <style name="flocalOrangeTheme">
+        <item name="colorPrimary">@color/softGreyColor</item>
+        <item name="colorPrimaryDark">@color/flocalOrange</item>
+        <item name="colorAccent">@color/flocalOrange</item>
+    </style>
+
+    <style name="flocalPurpleTheme">
+        <item name="colorPrimary">@color/softGreyColor</item>
+        <item name="colorPrimaryDark">@color/flocalPurple</item>
+        <item name="colorAccent">@color/flocalPurple</item>
+    </style>
+
+    <style name="flocalRedTheme">
+        <item name="colorPrimary">@color/softGreyColor</item>
+        <item name="colorPrimaryDark">@color/flocalRed</item>
+        <item name="colorAccent">@color/flocalRed</item>
+    </style>
+
+    <style name="flocalTealTheme">
+        <item name="colorPrimary">@color/softGreyColor</item>
+        <item name="colorPrimaryDark">@color/flocalTeal</item>
+        <item name="colorAccent">@color/flocalTeal</item>
+    </style>
+
+    <style name="flocalYellowTheme">
+        <item name="colorPrimary">@color/softGreyColor</item>
+        <item name="colorPrimaryDark">@color/flocalYellow</item>
+        <item name="colorAccent">@color/flocalYellow</item>
+    </style>
+
+    <style name="SplashTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="SplashTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

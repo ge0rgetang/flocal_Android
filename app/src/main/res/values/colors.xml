@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F0F0F0</color>
+    <color name="colorPrimaryDark">#F0F0F0</color>
+    <color name="colorAccent">#006064</color>
+
+    <color name="flocalColor">#006064</color>
+    <color name="flocalFade">#26006064</color>
+    <color name="softGreyColor">#F0F0F0</color>
+
+    <color name="flocalBlue">#2196F3</color>
+    <color name="flocalBlueGrey">#607D8B</color>
+    <color name="flocalGreen">#4CAF50</color>
+    <color name="flocalOrange">#FF4605</color>
+    <color name="flocalPurple">#673AB7</color>
+    <color name="flocalRed">#F44336</color>
+    <color name="flocalTeal">#009688</color>
+    <color name="flocalYellow">#FFD600</color>
+
+    <color name="flocalBlueFade">#262196F3</color>
+    <color name="flocalBlueGreyFade">#26607D8B</color>
+    <color name="flocalGreenFade">#264CAF50</color>
+    <color name="flocalOrangeFade">#26FF4605</color>
+    <color name="flocalPurpleFade">#26673AB7</color>
+    <color name="flocalRedFade">#26F44336</color>
+    <color name="flocalTealFade">#26009688</color>
+    <color name="flocalYellowFade">#26FFD600</color>
+
+</resources>

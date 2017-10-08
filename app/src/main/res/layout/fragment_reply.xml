@@ -1,0 +1,82 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/replyConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context="com.dotnative.flocal.ReplyFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/replyRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/segmentedGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></android.support.v7.widget.RecyclerView>
+
+    <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/segmentedGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:layout_marginBottom="0dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:background="@color/softGreyColor"
+        segmentedgroup:layout_constraintBottom_toBottomOf="parent"
+        segmentedgroup:layout_constraintEnd_toEndOf="parent"
+        segmentedgroup:layout_constraintHorizontal_bias="0.5"
+        segmentedgroup:layout_constraintLeft_toLeftOf="parent"
+        segmentedgroup:layout_constraintRight_toRightOf="parent"
+        segmentedgroup:layout_constraintStart_toStartOf="parent"
+        segmentedgroup:sc_border_width="2dp"
+        segmentedgroup:sc_checked_text_color="@color/softGreyColor"
+        segmentedgroup:sc_corner_radius="0dp"
+        segmentedgroup:sc_tint_color="@color/flocalYellow">
+
+        <RadioButton
+            android:id="@+id/orderedSegment"
+            style="@style/RadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/orderedSegment"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/topSegment"
+            style="@style/RadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/topSegment"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/newestSegment"
+            style="@style/RadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/newestSegment"
+            android:textSize="18sp" />
+    </info.hoang8f.android.segmented.SegmentedGroup>
+
+</android.support.constraint.ConstraintLayout>

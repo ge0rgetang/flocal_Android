@@ -1,0 +1,24 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/chatListLConstraintLayout"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:clickable="true"
+android:focusable="true"
+tools:context="com.dotnative.flocal.ChatListFragment">
+
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/chatListRecyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+</android.support.v7.widget.RecyclerView>
+
+</android.support.constraint.ConstraintLayout>
+
